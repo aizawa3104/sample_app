@@ -8,3 +8,9 @@
 #   name: MyString
 #   email: MyString
 # チュートリアルでは上記のone:two:は削除することになっている。
+
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>
