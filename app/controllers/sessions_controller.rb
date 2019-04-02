@@ -13,7 +13,8 @@ class SessionsController < ApplicationController
       # params[:session][:remember_me] == '1' が真ならremember(user) 、偽ならforget(user)
       # remember user
       # ↑永続セッション　セッションに関するモジュールのリメンバー
-      redirect_to user
+      redirect_back_or user
+      # フレンドリーフォワーディング　sessions_helper
     else
       flash.now[:danger] = 'Invalid email/password combination' # 本当は正しくない
       render 'new'

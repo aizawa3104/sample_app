@@ -10,7 +10,10 @@ class User < ApplicationRecord
     # 存在性確認、長さの制限、フォーマット、一意性の制限をかける、{ case_sensitive: false }は大文字と小文字を無視させるオプション
     validates :email, presence: true, length:{maximum:255}, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
     has_secure_password
-    validates :password, presence: true, length: { minimum: 6 }
+    # パスワードを暗号化するメソッド。↑に新規登録時に空っぽを許可しない機能をもっている
+    # has_secure_passwordはDBを見ている
+    validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+    # allow_nil: true　で更新の時はnilを許可する
 
     # 渡された文字列のハッシュ値を返す
   def User.digest(string)
