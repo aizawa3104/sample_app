@@ -17,7 +17,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
 
     assert_template 'users/edit'
   end
-# ユーザー情報更新が成功するテスト
+# ユーザー情報更新が成功するテスト 兼 フレンドリーフォワーディングのテスト
 test "successful edit with friendly forwarding" do
   get edit_user_path(@user)
   log_in_as(@user)
